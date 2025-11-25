@@ -1,0 +1,7 @@
+fever_cases,cough_cases,diarrhea_cases,region_population,outbreak
+20,30,5,10000,0
+50,70,20,15000,1
+10,15,3,8000,0
+80,90,40,20000,1
+60,65,25,18000,1
+15,20,5,9000,0

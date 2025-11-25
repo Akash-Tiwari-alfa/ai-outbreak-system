@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h2 class="mb-3">AI-Driven Public Health Outbreak System</h2>
+        <p class="text-muted">
+          Login or register to access your personalized outbreak prediction dashboard,
+          monitor regions, and view AI-driven recommendations.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="{{ url_for('login') }}" class="btn btn-primary flex-fill">Login</a>
+          <a href="{{ url_for('register') }}" class="btn btn-outline-primary flex-fill">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

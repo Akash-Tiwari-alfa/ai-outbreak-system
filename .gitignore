@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# SQLite database
+instance/
+outbreak.db
+*.sqlite3
+
+# ML model files
+models/*.pkl
+
+# Env
+.env
+
+# Logs
+*.log

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-12">
+    <h2>Outbreak Risk Prediction</h2>
+    <p class="text-muted">
+      Enter region and symptom case counts to estimate outbreak risk and get AI-driven recommendations,
+      including air quality context and nearby hospitals.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <form method="POST" class="row g-3">
+          <div class="col-12">
+            <label class="form-label">Region name</label>
+            <input type="text" name="region" class="form-control" placeholder="e.g., Surat, Ahmedabad">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Fever cases</label>
+            <input type="number" name="fever_cases" class="form-control" min="0" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Cough cases</label>
+            <input type="number" name="cough_cases" class="form-control" min="0" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Diarrhea cases</label>
+            <input type="number" name="diarrhea_cases" class="form-control" min="0" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Region population</label>
+            <input type="number" name="region_population" class="form-control" min="1" required>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">
+              Run Prediction
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% if prediction is not none %}
+  <div class="col-lg-6 mt-4 mt-lg-0">
+    <div class="card shadow-sm border-0 mb-3">
+      <div class="card-body">
+        <h5 class="card-title mb-3">Prediction Result</h5>
+        {% if region %}
+          <p class="mb-1"><strong>Region:</strong> {{ region }}</p>
+        {% endif %}
+        <p class="mb-1">
+          Predicted outbreak:
+          <span class="fw-bold">
+            {{ 'YES' if prediction == 1 else 'NO' }}
+          </span>
+        </p>
+        <p class="mb-1">
+          Estimated risk probability:
+          <span class="fw-bold">{{ probability }}%</span>
+        </p>
+        <p class="mb-2">
+          Risk level:
+          <span class="badge
+            {% if risk_level == 'High' %}bg-danger
+            {% elif risk_level == 'Medium' %}bg-warning text-dark
+            {% else %}bg-success{% endif %}
+          ">
+            {{ risk_level }}
+          </span>
+        </p>
+
+        {% if aqi_value is not none %}
+        <p class="mb-0">
+          Air Quality Index:
+          <strong>{{ aqi_value }}</strong>
+          <span class="text-muted">({{ aqi_category }})</span>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if hospitals %}
+    <div class="card shadow-sm border-0 mb-3">
+      <div class="card-body">
+        <h5 class="card-title mb-3">Nearby Hospitals (Mapped)</h5>
+        <ul class="list-group list-group-flush small">
+          {% for h in hospitals %}
+            <li class="list-group-item">
+              <div class="fw-semibold">{{ h.name }}</div>
+              <div class="text-muted">{{ h.address }}</div>
+              <div class="text-muted">Contact: {{ h.phone }}</div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% else %}
+    <div class="card shadow-sm border-0 mb-3">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-1 text-muted">Hospitals</h6>
+        <p class="small mb-0">
+          No mapped hospitals for this region in the demo dataset. In production,
+          this can be connected to a live health facility directory or maps API.
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if suggestions %}
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h5 class="card-title mb-3">AI-Driven Recommendations</h5>
+        <ul class="mb-0">
+          {% for s in suggestions %}
+            <li>{{ s }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-12">
+    <h2 class="mb-2">Overview</h2>
+    <p class="text-muted">
+      AI-powered monitoring of potential public health outbreaks across regions.
+    </p>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Total Predictions</h6>
+        <h3 class="card-title">{{ total_predictions }}</h3>
+        <p class="card-text small text-muted">Total scenarios evaluated by the model.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">High-Risk Alerts</h6>
+        <h3 class="card-title text-danger">{{ high_risk_count }}</h3>
+        <p class="card-text small text-muted">Predictions marked as high outbreak risk.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Regions Monitored</h6>
+        <h3 class="card-title text-primary">{{ region_count }}</h3>
+        <p class="card-text small text-muted">Unique regions with recorded predictions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 mb-3">
+    <h5>Recent Predictions</h5>
+  </div>
+  <div class="col-12">
+    {% if recent_predictions %}
+      <div class="table-responsive shadow-sm bg-white rounded">
+        <table class="table table-sm mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Time</th>
+              <th>Region</th>
+              <th>Fever</th>
+              <th>Cough</th>
+              <th>Diarrhea</th>
+              <th>Population</th>
+              <th>Risk Level</th>
+              <th>Probability</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for p in recent_predictions %}
+            <tr>
+              <td>{{ p.timestamp }}</td>
+              <td>{{ p.region }}</td>
+              <td>{{ p.fever_cases }}</td>
+              <td>{{ p.cough_cases }}</td>
+              <td>{{ p.diarrhea_cases }}</td>
+              <td>{{ p.region_population }}</td>
+              <td>
+                <span class="badge
+                  {% if p.risk_level == 'High' %}bg-danger
+                  {% elif p.risk_level == 'Medium' %}bg-warning text-dark
+                  {% else %}bg-success{% endif %}
+                ">
+                  {{ p.risk_level }}
+                </span>
+              </td>
+              <td>{{ p.probability }}%</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="text-muted">No predictions yet. Start by using the <a href="/predict">Predict</a> page.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
