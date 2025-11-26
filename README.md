@@ -249,7 +249,7 @@ App will run at:
 | Login Page         | ![Login Page](https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-00.png)|
 | Dashboard          | ![Dashboard](https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-42.png)|
 | Prediction Result  | ![Prediction Result](https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-55.png)|
-| Overview           | ![Overview](https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-24.png
+| Overview           | ![Overview](https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-24.png)|
 
 ## 🧠 **How the ML Model Works**
 
