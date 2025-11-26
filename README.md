@@ -242,8 +242,6 @@ App will run at:
 
 ## 📸 **Screenshots
 
-> Replace placeholders with actual screenshots.
-
 | Feature            | Screenshot                              |
 | ------------------ | --------------------------------------- |
 | Login Page         | ![Login Page](https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-00.png)|
