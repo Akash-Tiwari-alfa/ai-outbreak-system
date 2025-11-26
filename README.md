@@ -240,7 +240,7 @@ App will run at:
 
 ---
 
-## 📸 **Screenshots (Add your own)**
+## 📸 **Screenshots
 
 > Replace placeholders with actual screenshots.
 
