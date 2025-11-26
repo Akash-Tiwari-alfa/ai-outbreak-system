@@ -246,10 +246,9 @@ App will run at:
 
 | Feature            | Screenshot                              |
 | ------------------ | --------------------------------------- |
-| Login Page         | (https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-00.png)       |
+| Login Page         | (https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-00.png)|
 | Dashboard          | (https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-42.png)|
-| Prediction Result  | ![Predict](screenshots/predict.png)     |
-| AI Recommendations | ![AI](screenshots/recommendations.png)  |
+| Prediction Result  | (https://github.com/Akash-Tiwari-alfa/ai-outbreak-system/blob/main/Screenshot%20From%202025-11-26%2010-36-55.png)|
 
 Create folder:
 
